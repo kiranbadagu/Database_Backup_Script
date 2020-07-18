@@ -18,8 +18,6 @@ chmod 444
 # Dump database into SQL file
 mysqldump --user=$user --password=$password --host=$host $db_name > $backup_path$server$db_name$date.sql
 
-# Delete files older than 7 days from local machine
-find $backup_path/* -mtime +7 -exec rm {} \;
 
 # Synchronize local backup directory to a Google Cloud Storage bucket
 gsutil cp  $backup_path$server$db_name$date.sql   gs://$bucket_name
